@@ -1,0 +1,10 @@
+@import commons
+
+if $ui-responsive
+
+    $media = "(max-width: " + ($width-small - 1) + ')'
+    @media $media
+
+        body
+            padding-left $gutter
+            padding-right $gutter

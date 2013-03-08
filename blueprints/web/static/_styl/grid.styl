@@ -1,0 +1,76 @@
+@import nib
+@import commons
+
+$columns = 12
+
+$grid($column-width=60px, $gutter-width=$gutter)
+    for $column in 1..$columns
+        $span-width = ($column * $column-width) + ($gutter-width * ($column - 1))
+
+        .span{$column}
+            width $span-width
+
+        if $column < $columns
+            .offset{$column}
+                margin-left $span-width + ($gutter-width * 2)
+        else
+            .container
+                width $span-width
+
+/* Class selectors */
+
+.container
+    clearfix()
+    margin-left auto
+    margin-right auto
+
+.row
+    clearfix()
+    margin-left -($gutter)
+
+    [class*="span"]
+        float left
+        margin-left $gutter
+        min-height 1px
+
+$grid()
+
+/* Media queries */
+
+if $ui-responsive
+
+    $media = "(max-width: " + ($width-small - 1) + ')'
+    @media $media
+
+        .container
+            width auto
+
+        .row
+            margin-left 0
+
+            [class*="span"]
+                box-sizing border-box
+                display block
+                float none
+                margin-left 0
+                width 100%
+
+        .span12
+            box-sizing border-box
+            width 100%
+
+    $media = "(min-width: " + $width-small + ") and (max-width: " + ($width-medium - 1) + ')'
+    @media $media
+
+        $grid(42px)
+
+    $media = "(min-width: " + $width-large + ')'
+    @media $media
+
+        .row
+            margin-left -($gutter-large)
+
+            [class*="span"]
+                margin-left $gutter-large
+
+        $grid(70px, $gutter-large)

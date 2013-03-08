@@ -1,0 +1,43 @@
+{% extends "skeleton.html" %}
+
+{% block css %}
+    <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" /> -->
+    {% assets "css", "web/_styl/type.styl", "web/_styl/grid.styl", "web/_styl/navbar.styl", "web/_styl/nav.styl", "web/_styl/buttons.styl", "web/_styl/base.styl",
+        filters="stylus", output="web/css/base.css" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" />
+    {% endassets %}
+    <link href="{{ url_for("web.static", filename="js/bootstrap.min.css") }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+<header>
+    <nav class="bar static inverse">
+        <a class="brand" href="#">CRAIC</a>
+        <ul>
+            <li><a href="{{ url_for("web.landing") }}">{{ _("Home") }}</a></li>
+            <li><a data-pjax="#body" href="{{ url_for("web.about") }}">{{ _("About") }}</a></li>
+            <li><a data-pjax="#body" href="{{ url_for("web.css") }}">{{ _("CSS") }}</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container" id="body">
+    {% if template %}{% include template %}{% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for("static", filename="js/prettify.js") if g.is_local else "//cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js" }}"></script>
+    {% assets "web/_coffee/base.coffee", filters="coffeescript", output="web/_js/base.js" %}
+        {% assets "jquery/pjax.js", "web/_js/base.js", filters="uglifyjs", output="web/js/base.min.js" %}
+        <script src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+    {% endassets %}
+    {% if not g.is_local %}
+    {% if request.environ["wsgi.url_scheme"] == "https" %}
+    <script async src="//ssl.google-analytics.com/ga.js"></script>
+    {% else %}
+    <script async src="//www.google-analytics.com/ga.js"></script>
+    {% endif %}
+    {% endif %}
+{% endblock %}

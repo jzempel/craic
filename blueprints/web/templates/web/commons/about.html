@@ -1,0 +1,122 @@
+{% if request.is_pjax %}
+<title>{{ g.title }}</title>
+{% endif %}
+
+<nav class="row">
+    <ul class="span6 stacked tabs">
+        {% for item in range(10) %}
+        <li class="{% if loop.index == 5 %}active{% elif loop.index == 7 %}disabled{% endif %}"><a href="#">Item {{ item + 1 }}</a></li>
+        {% endfor %}
+    </ul>
+    <ul class="span6 stacked pills">
+        {% for item in range(10) %}
+        <li class="{% if loop.index == 2 %}active{% elif loop.index == 9 %}disabled{% endif %}"><a href="#">Item {{ item + 1 }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+{% for row in range(10) %}
+<div class="row">
+    {% for column in range(12) %}
+    <span class="span1">{{ loop.index }}</span>
+    {% endfor %}
+</div>
+{% endfor %}
+<p class="error">{{ lipsum(1, html=false) }}</p>
+<p class="info">{{ lipsum(1, html=false) }}</p>
+<p class="muted">{{ lipsum(1, html=false) }}</p>
+<p class="success">{{ lipsum(1, html=false) }}</p>
+<p class="warning">{{ lipsum(1, html=false) }}</p>
+<a class="error" href="#">Error</a>
+<a class="info" href="#">Info</a>
+<a class="success" href="#">Success</a>
+<a class="warning" href="#">Warning</a>
+{{ lipsum(3) }}
+<p class="lead">{{ lipsum(1, html=false) }}</p>
+<p class="lead">{{ lipsum(1, html=false) }}</p>
+<p><small>{{ lipsum(1, html=false) }}</small></p>
+{% for x in range(6) %}
+<h{{ loop.index }}>h{{ loop.index }}. Heading {{ loop.index }} <small>Subtext</small></h{{ loop.index }}>
+{% endfor %}
+<abbr title="attribute">attr</abbr>
+<abbr class="initialism" title="Hypertext Markup Language">html</abbr>
+
+<address>
+    <strong>Twitter, Inc.</strong><br>
+    795 Folsom Ave, Suite 600<br>
+    San Francisco, CA 94107<br>
+    <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+    <strong>Full Name</strong><br>
+    <a href="mailto:#">first.last@gmail.com</a>
+</address>
+
+<blockquote>
+    {{ lipsum(1) }}
+</blockquote>
+
+<blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+</blockquote>
+
+<ul>
+    {% for x in range(10) %}
+    <li>{{ lipsum(1, html=false, min=5, max=10) }}</li>
+    {% endfor %}
+</ul>
+
+<ol>
+    {% for x in range(10) %}
+    <li>{{ lipsum(1, html=false, min=5, max=10) }}</li>
+    {% endfor %}
+</ol>
+
+<dl>
+    {% for x in range(10) %}
+    <dt>{{ lipsum(1, html=false, min=1, max=2) }}</dt>
+    <dd>{{ lipsum(1, html=false, min=10, max=20) }}</dd>
+    {% endfor %}
+</dl>
+
+<p>
+    <button>Default</button>
+    <button class="active">Active</button>
+    <button class="disabled">Disabled</button>
+</p>
+<p>
+    <button class="primary">Primary</button>
+    <button class="active primary">Active</button>
+    <button class="disabled primary">Disabled</button>
+</p>
+<p>
+    <button class="info">Info</button>
+    <button class="active info">Active</button>
+    <button class="disabled info">Disabled</button>
+</p>
+<p>
+    <button class="success">Success</button>
+    <button class="active success">Active</button>
+    <button class="disabled success">Disabled</button>
+</p>
+<p>
+    <button class="warning">Warning</button>
+    <button class="active warning">Active</button>
+    <button class="disabled warning">Disabled</button>
+</p>
+<p>
+    <button class="danger">Danger</button>
+    <button class="active danger">Active</button>
+    <button class="disabled danger">Disabled</button>
+</p>
+<p>
+    <button class="inverse">Inverse</button>
+    <button class="active inverse">Active</button>
+    <button class="disabled inverse">Disabled</button>
+</p>
+<p>
+    <button class="link">Link</button>
+    <button class="active link">Active</button>
+    <button class="disabled link">Disabled</button>
+</p>

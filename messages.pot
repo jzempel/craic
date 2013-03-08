@@ -1,0 +1,31 @@
+# Translations template for Craic.
+# Copyright (C) 2012 by Jonathan Zempel
+# This file is distributed under the same license as the Craic project.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-11-19 09:44-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: application/__init__.py:56
+#, python-format
+msgid "Craic / %(title)s"
+msgstr ""
+
+#: application/__init__.py:58
+msgid "Craic."
+msgstr ""
+
+#: blueprints/web/views/commons.py:20
+msgid "About"
+msgstr ""
+

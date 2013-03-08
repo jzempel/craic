@@ -1,0 +1,37 @@
+@import nib
+
+/* Variables */
+
+$background-color = white
+$border-radius = 4px
+$border-radius-large = 6px
+$border-radius-small = 3px
+$color-error = #b94a48
+$color-info = #3a87ad
+$color-primary = #08c
+$color-success = #468847
+$color-warning = #c09853
+$font-size = 14px
+$gray = #555
+$gray-dark = #333
+$gray-darker = #222
+$gray-light = #999
+$gray-lighter = #eee
+$gutter = 20px
+$gutter-large = 30px
+$line-height = 20px
+$ui-flattened = false
+$ui-responsive = true
+$ui-squared = false
+$width-large = 1200px
+$width-medium = 980px
+$width-small = 768px
+
+/* Functions */
+
+$background-gradient($angle, $color-start, $color-end)
+    background-color mix($color-start, $color-end, 60%)
+
+    if not $ui-flattened
+        background-image linear-gradient($angle, $color-start, $color-end)
+        background-repeat repeat-x

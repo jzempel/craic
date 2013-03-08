@@ -1,0 +1,16 @@
+Flask-Assets >= 0.8
+    # webassets
+Flask-Babel
+    # Babel
+    # speaklater
+Flask-Script
+Flask >= 0.9
+    Werkzeug >= 0.8.3
+    Jinja2 >= 2.6
+rq
+    # Logbook
+    # python-dateutil
+    # pytz
+    # redis
+    # six
+    # times

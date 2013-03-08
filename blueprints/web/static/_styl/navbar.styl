@@ -1,0 +1,145 @@
+@import commons
+
+$color = #777
+$min-height = 40px
+$padding = (($min-height - $line-height) / 2)
+
+/* Class selectors */
+
+nav.bar
+    $background-gradient(top, white, darken(white, 5%))
+    border 1px solid darken(white, 12%)
+    border-radius $border-radius unless $ui-squared
+    box-shadow 0 1px 4px rgba(0, 0, 0, .065)
+    clearfix()
+    color $color
+    margin-bottom $line-height
+    min-height $min-height
+    overflow visible
+    padding-left $gutter
+    padding-right $gutter
+
+    .brand
+        color inherit
+        display block
+        float left
+        font-size 20px
+        font-weight 200
+        margin-left -$gutter
+        padding $padding $gutter $padding
+        text-shadow 0 1px 0 white
+
+        &:hover
+            text-decoration none
+
+    &.fixed
+        border-radius 0 unless $ui-squared
+        left 0
+        margin-bottom 0
+        padding-left 0
+        padding-right 0
+        position fixed
+        right 0
+        z-index 1030
+
+        &.bottom
+            border-width 1px 0 0
+            bottom 0
+            box-shadow 0 -1px 10px rgba(0, 0, 0, .1)
+
+        &.top
+            border-width 0 0 1px
+            box-shadow 0 1px 10px rgba(0, 0, 0, .1)
+            top 0
+
+    &.inverse
+        $background-gradient(top, #222, #111)
+        border-color #252525
+        color $gray-light
+
+        .brand
+            color $gray-light
+            text-shadow 0 -1px 0 rgba(0, 0, 0, .25)
+
+            &:hover
+                color white
+
+        li
+
+            & > a
+                color $gray-light
+                text-shadow 0 -1px 0 rgba(0, 0, 0, .25)
+
+                &:focus,
+                &:hover
+                    color white
+
+            &.active > a,
+            &.active > a:focus,
+            &.active > a:hover
+                background-color #111
+                color white
+
+    &.static
+        border-radius 0 unless $ui-squared
+        border-width 1px 0 0
+        margin-bottom 0
+        position static
+
+    ol,
+    ul
+        display block
+        float left
+        left 0
+        margin 0 10px 0 0
+        position relative
+
+        & > li
+            float left
+
+            & > a
+                color $color
+                float none
+                padding $padding 15px $padding
+                text-shadow 0 1px 0 white
+
+                &:focus,
+                &:hover
+                    background-color: transparent
+                    color $gray-dark
+
+            &.active > a,
+            &.active > a:focus,
+            &.active > a:hover
+                background-color darken(white, 10%)
+                box-shadow inset 0 3px 8px rgba(0, 0, 0, .125) unless $ui-flattened
+                color $gray
+
+/* Media queries */
+
+if $ui-responsive
+
+    $media = "(max-width: " + ($width-small - 1) + ')'
+    @media $media
+
+        body
+            padding-top 0
+
+        nav.bar
+
+            &.fixed,
+            &.static
+                margin-left -($gutter)
+                margin-right -($gutter)
+
+    $media = "(max-width: " + ($width-medium - 1) + ')'
+    @media $media
+
+        nav.bar.fixed
+            position static
+
+            $.bottom
+                margin-top $line-height
+
+            &.top
+                margin-bottom $line-height

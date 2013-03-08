@@ -1,0 +1,83 @@
+{% if request.is_pjax %}
+<title>{{ g.title }}</title>
+{% endif %}
+
+<section id="typography">
+    <h1 class="title">Typography</h1>
+    <h2 id="headings">Headings</h2>
+    <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+    <div class="example">
+        <h1>h1. Heading 1</h1>
+        <h2>h2. Heading 2</h2>
+        <h3>h3. Heading 3</h3>
+        <h4>h4. Heading 4</h4>
+        <h5>h5. Heading 5</h5>
+        <h6>h6. Heading 6</h6>
+    </div>
+    <h2 id="body-copy">Body copy</h2>
+    <p>Craic's global default <code>font-size</code> is <strong>14px</strong>,
+        with a <code>line-height</code> of <strong>20px</strong>.  This is applied
+        to the <code>&lt;body&gt;</code> and all paragraphs. In addition,
+        <code>&lt;p&gt;</code> elements receive a bottom margin of half their
+        line-height (10px by default).</p>
+    <div class="example">
+        {{ lipsum(3, max=30) }}
+        <pre class="code prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
+    </div>
+    <h3 id="lead-body-copy">Lead body copy</h3>
+    <p>Make a paragraph stand out by adding <code>.lead</code>.
+    <div class="example">
+        <p class="lead">{{ lipsum(1, html=false, min=15, max=20) }}</p>
+        <pre class="code prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
+    </div>
+    <h3>Build with Stylus</h3>
+    <p>The typographic scale is based on several variables in
+        <strong>commons.styl</strong>: <code>$font-size</code>,
+        <code>$line-height</code>, and <code>$gutter</code>. The first is the base
+        font-size used throughout, the second is the base line-height, and the
+        third is the default margin/padding gutter. We use those variables along
+        with simple math to create the margins, paddings, and line-heights of all
+        our type and more. Customize them and Craic adapts.</p>
+
+    <hr>
+
+    <h2 id="emphasis">Emphasis</h2>
+    <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
+    <h3>Small</h3>
+    <p>For de-emphasizing inline or blocks of text, use the small tag.</p>
+    <div class="example">
+        <p><small>This line of text is meant to be treated as fine print.</small></p>
+        <pre class="code prettyprint">&lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;</pre>
+    </div>
+    <h3>Bold</h3>
+    <p>For emphasizing a snippet of text with a heavier font-weight.</p>
+    <div class="example">
+        <p>The following snippet is <strong>rendered as bold text</strong>.</p>
+        <pre class="code prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
+    </div>
+    <h3>Italics</h3>
+    <p>For emphasizing a snippet of text with italics.
+    <div class="example">
+        <p>The following snippet is <em>rendered as italicized text</em>.</p>
+        <pre class="code prettyprint">&lt;em&gt;rendered as italicized text&lt/em&gt;</pre>
+    </div>
+    <h3>Emphasis classes</h3>
+    <p>Convey meaning through color with a handful of emphasis utility classes.</p>
+    <div class="example">
+        {% set muted = lipsum(1, html=false, min=8, max=10) %}
+        {% set warning = lipsum(1, html=false, min=8, max=10) %}
+        {% set error = lipsum(1, html=false, min=8, max=10) %}
+        {% set info = lipsum(1, html=false, min=8, max=10) %}
+        {% set success = lipsum(1, html=false, min=8, max=10) %}
+        <p class="muted">{{ muted }}</p>
+        <p class="warning">{{ warning }}</p>
+        <p class="error">{{ error }}</p>
+        <p class="info">{{ info }}</p>
+        <p class="success">{{ success }}</p>
+        <pre class="code linenums prettyprint">&lt;p class="muted"&gt;{{ muted }}&lt;/p&gt;
+&lt;p class="warning"&gt;{{ warning }}&lt;/p&gt;
+&lt;p class="error"&gt;{{ error }}&lt;/p&gt;
+&lt;p class="info"&gt;{{ info }}&lt;/p&gt;
+&lt;p class="success"&gt;{{ success }}&lt;/p&gt;</pre>
+    </div>
+</section>

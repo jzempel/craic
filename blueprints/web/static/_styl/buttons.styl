@@ -1,0 +1,96 @@
+@import nib
+@import commons
+
+$button($gradient-start, $gradient-end, $color=white, $text-shadow=0 -1px 0 rgba(0, 0, 0, .25), $border-color=$gradient-end)
+    $background-gradient(top, $gradient-start, $gradient-end)
+    border 1px solid $border-color
+    border-bottom-color darken($border-color, 10%)
+    border-color rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+    border-radius $border-radius unless $ui-squared
+    box-shadow inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05)
+    color $color
+    cursor pointer
+    display inline-block
+    font-size $font-size
+    line-height $line-height
+    margin-bottom 0
+    padding 4px 12px
+    text-align center
+    text-shadow $text-shadow
+    vertical-align middle
+
+    &:active,
+    &.active
+        background-color $gradient-end
+        background-image none
+        color @color
+        box-shadow inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05)
+        outline 0
+
+    &[disabled],
+    &.disabled
+        background-color $gradient-end
+        background-image none
+        color @color
+        cursor default
+        box-shadow none
+        opacity .65
+
+    &:hover
+        background-color $gradient-end
+        background-position 0 -15px
+        color @color
+        text-decoration none
+        transition background-position 0.1s linear
+
+/* Element selectors */
+
+button,
+.button
+    $button(white, darken(white, 10%), $gray-dark, 0 1px 1px rgba(255, 255, 255, 0.75), #bbb)
+
+    &.danger,
+    &.error
+        $button(#ee5f5b, #bd362f)
+
+    &.info
+        $button(#5bc0de, #2f96b4)
+
+    &.link
+        background-color transparent
+        background-image none
+        border-color transparent
+        border-radius 0 unless $ui-squared
+        box-shadow none
+        color $color-primary
+        cursor pointer
+
+        &:active,
+        &.active
+            background-color @background-color
+            box-shadow @box-shadow
+
+        &[disabled],
+        &.disabled
+            opacity 1
+
+            &:hover
+                color @color
+                cursor default
+                text-decoration none
+
+        &:hover
+            color darken(@color, 15%)
+            text-decoration underline
+
+    &.inverse
+        $button(#444, $gray-darker)
+
+    &.primary
+        $button($color-primary, $color-primary + 20deg)
+
+    &.success
+        $button(#62c462, #51a351)
+
+    &.warning
+        $button(#fbb450, #f89406)

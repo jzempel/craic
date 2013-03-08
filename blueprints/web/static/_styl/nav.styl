@@ -1,0 +1,104 @@
+@import nib
+@import commons
+
+$border-color = #ddd
+
+/* Element selectors */
+
+nav
+    ol,
+    ul
+        list-style none
+        margin-bottom $line-height
+        margin-left 0
+
+        & > li
+
+            & > a
+                display block
+
+                &:hover
+                    background-color $gray-lighter
+                    text-decoration none
+
+            &.disabled > a
+                color $gray-light
+
+            &.disabled > :hover
+                background-color transparent
+                cursor default
+                text-decoration none
+
+        &.pills
+            clearfix()
+
+            & > li
+                float left
+
+                & > a
+                    border-radius ($border-radius + 1) unless $ui-squared
+                    line-height $font-size
+                    margin 2px 2px 2px 0
+                    padding 8px 12px
+
+                &.active > a,
+                &.active > a:hover
+                    background-color $color-primary
+                    color white
+
+            &.stacked > li
+                float none
+
+                & > a
+                    margin-bottom 3px
+                    margin-right 0
+
+                &:last-child > a
+                    margin-bottom 1px
+
+        &.tabs
+            border-bottom 1px solid $border-color
+            clearfix()
+
+            & > li
+                float left
+                margin-bottom -1px
+
+                & > a
+                    border 1px solid transparent
+                    border-radius $border-radius $border-radius 0 0 unless $ui-squared
+                    line-height $line-height
+                    margin-right 2px
+                    padding 8px 12px
+
+                    &:hover
+                        border-color $gray-lighter $gray-lighter $border-color
+
+                &.active > a,
+                &.active > a:hover
+                    background-color $background-color
+                    border 1px solid $border-color
+                    border-bottom-color transparent
+                    color $gray
+                    cursor default
+
+            &.stacked
+                border-bottom 0
+
+                & > li
+                    float none
+
+                    & > a
+                        border 1px solid $border-color
+                        border-radius 0 unless $ui-squared
+                        margin-right 0
+
+                        &:hover
+                            border-color $border-color
+                            z-index 2
+
+                    &:first-child > a
+                        border-radius top $border-radius unless $ui-squared
+
+                    &:last-child > a
+                        border-radius bottom $border-radius unless $ui-squared
