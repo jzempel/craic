@@ -1,0 +1,5 @@
+.*
+*.py[co]
+blueprints/*/static/css
+blueprints/*/static/js
+!.gitignore
